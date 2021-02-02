@@ -8,6 +8,7 @@ class CheckoutSystemSpec extends Specification with Matchers {
 
     "compute the cost of zero items" in zero_items_test
     "compute the cost of one apple" in one_apple_test
+    "compute the cost of one orange" in one_orange_test
     "handle one unrecognised item" in one_unrecognised_item_test
     "handle more than one unrecognised item" in more_than_one_unrecognised_item_test
   }
@@ -17,6 +18,9 @@ class CheckoutSystemSpec extends Specification with Matchers {
 
   def one_apple_test: Result =
     CheckoutSystem.checkout(List("apple")) must beRight(60)
+
+  def one_orange_test: Result =
+    CheckoutSystem.checkout(List("orange")) must beRight(25)
 
   def one_unrecognised_item_test =
     CheckoutSystem.checkout(List("unrecognised-item")) must beLeft(
