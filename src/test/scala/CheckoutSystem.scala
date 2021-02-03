@@ -10,12 +10,14 @@ object CheckoutSystem {
     }
     val unrecognisedItems = itemsByType.getOrElse(unrecognisedItem, Nil)
     if (unrecognisedItems.isEmpty) {
-      Right(itemsByType.map {
+      val total = itemsByType.map {
         case ("apple", apples) => 60 * (apples.size / 2 + apples.size % 2)
         case ("orange", oranges) => 25 * (oranges.size / 3 * 2 + oranges.size % 3)
-      }.foldLeft(0)(_ + _))
+      }.foldLeft(0)(_ + _)
+      Right(total)
     } else {
-      Left(s"ERROR - the following items were not recognised: ${unrecognisedItems.mkString("'", "','", "'")}.")
+      val errorMessage = s"ERROR - the following items were not recognised: ${unrecognisedItems.mkString("'", "','", "'")}."
+      Left(errorMessage)
     }
   }
 
