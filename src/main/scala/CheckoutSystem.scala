@@ -30,8 +30,8 @@ object CheckoutSystem {
    */
   private def groupItemsByType(items: List[String]): Map[ItemType, List[String]] = {
     items.groupBy {
-      case "apple" => Apple
-      case "orange" => Orange
+      case Apple.name => Apple
+      case Orange.name => Orange
       case _ => Unrecognised
     }
   }

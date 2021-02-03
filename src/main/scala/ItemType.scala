@@ -1,7 +1,7 @@
 sealed trait ItemType {
-  def name: String
-  def price: Int
-  def offer: Option[Offer]
+  val name: String
+  val price: Int
+  val offer: Option[Offer]
 }
 
 case class Offer(quantity: Int, freeQuantity: Int)
@@ -9,21 +9,21 @@ case class Offer(quantity: Int, freeQuantity: Int)
 object ItemType {
 
   case object Apple extends ItemType {
-    override def name: String = "apple"
-    override def price: Int = 60
-    override def offer: Option[Offer] = Some(Offer(quantity = 2, freeQuantity = 1))
+    override val name: String = "apple"
+    override val price: Int = 60
+    override val offer: Option[Offer] = Some(Offer(quantity = 2, freeQuantity = 1))
   }
 
   case object Orange extends ItemType {
-    override def name: String = "orange"
-    override def price: Int = 25
-    override def offer: Option[Offer] = Some(Offer(quantity = 3, freeQuantity = 1))
+    override val name: String = "orange"
+    override val price: Int = 25
+    override val offer: Option[Offer] = Some(Offer(quantity = 3, freeQuantity = 1))
   }
 
   case object Unrecognised extends ItemType {
-    override def name: String = "unrecognised-item"
-    override def price: Int = 0
-    override def offer: Option[Offer] = None
+    override val name: String = "unrecognised-item"
+    override val price: Int = 0
+    override val offer: Option[Offer] = None
   }
 
 }
