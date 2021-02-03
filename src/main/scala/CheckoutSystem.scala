@@ -1,5 +1,4 @@
-
-import ItemType._
+import ItemType.{Apple, Orange, Unrecognised}
 
 object CheckoutSystem {
 
