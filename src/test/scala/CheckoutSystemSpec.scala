@@ -13,6 +13,7 @@ class CheckoutSystemSpec extends Specification with Matchers {
     "compute the cost of three apples and two oranges" in three_apples_and_two_oranges_test
     "support 'buy one apple get one free' offer" in buy_one_apple_get_one_free
     "support 'three oranges for the price of two' offer" in three_oranges_for_the_price_of_two
+    "support multiple offers" in three_oranges_and_two_apples_for_the_price_of_two_oranges_and_one_apple
     "handle one unrecognised item" in one_unrecognised_item_test
     "handle more than one unrecognised item" in more_than_one_unrecognised_item_test
   }
@@ -36,7 +37,10 @@ class CheckoutSystemSpec extends Specification with Matchers {
    CheckoutSystem.checkout(List("apple", "apple", "orange")) must beRight(85)
 
   def three_oranges_for_the_price_of_two: Result =
-    CheckoutSystem.checkout(List("orange", "apple", "orange", "apple", "orange")) must beRight(170)
+    CheckoutSystem.checkout(List("orange", "apple", "orange", "orange")) must beRight(110)
+
+  def three_oranges_and_two_apples_for_the_price_of_two_oranges_and_one_apple: Result =
+    CheckoutSystem.checkout(List("orange", "apple", "orange", "orange", "apple")) must beRight(110)
 
   def one_unrecognised_item_test =
     CheckoutSystem.checkout(List("unrecognised-item")) must beLeft(
