@@ -49,7 +49,7 @@ object CheckoutSystem {
    * all the items in the map.
    */
   private def computePrice(itemsByType: Map[ItemType, List[String]]): Int = {
-    computePriceForEachItemType(itemsByType).foldLeft(0)(_ + _)
+    computePriceForEachItemType(itemsByType).sum
   }
 
   /**
